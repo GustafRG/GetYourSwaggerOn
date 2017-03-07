@@ -338,7 +338,23 @@ namespace SwaggerWcf.Support
             string description = settings != null ? settings.Description : null;
             bool required = settings != null && settings.Required;
             string name = parameter.Name;
-            DataMemberAttribute dataMemberAttribute = parameter.GetCustomAttribute<DataMemberAttribute>();
+
+			DataContractAttribute dataContractAttribute = parameter.ParameterType.GetCustomAttribute<DataContractAttribute>();
+			if (dataContractAttribute != null)
+			{
+				if (!string.IsNullOrEmpty(dataContractAttribute.Name))
+				{
+					name = dataContractAttribute.Name;
+				}
+				else if (dataContractAttribute.Namespace.Equals(String.Empty))
+				{
+					name = parameter.ParameterType.Name;
+				}
+	
+			}
+
+
+			DataMemberAttribute dataMemberAttribute = parameter.ParameterType.GetCustomAttribute<DataMemberAttribute>();
 
             if (dataMemberAttribute != null && !string.IsNullOrEmpty(dataMemberAttribute.Name))
                 name = dataMemberAttribute.Name;

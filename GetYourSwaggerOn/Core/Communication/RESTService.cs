@@ -17,10 +17,10 @@ namespace GetYourSwaggerOn.Core.Communication
         WebOperationContext ctx = WebOperationContext.Current;
 
         [SwaggerWcfTag("MyClass")]
-        [SwaggerWcfResponse(HttpStatusCode.Created, "MyClass created, value in the response body with id updated")]
+		[SwaggerWcfResponse(HttpStatusCode.Created, "MyClass created, value in the response body with id updated")]
         [SwaggerWcfResponse(HttpStatusCode.BadRequest, "Bad request", true)]
         [SwaggerWcfResponse(HttpStatusCode.InternalServerError, "Internal error", true)]
-        public MyClass DoStuff(MyClass myclass)
+        public MyClass DoStuff([SwaggerWcfParameter]MyClass myclass)
         {
            MyClass retMyClass;
            if(myclass != null)

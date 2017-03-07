@@ -55,8 +55,9 @@ namespace SwaggerWcf.Support
         {
             DefinitionSchema schema = new DefinitionSchema
             {
-                
-                Name = definitionType.FullName
+				//TODO: Testa ändra name /Gustaf
+				Data
+				Name = definitionType.Name
             };
 
             ProcessTypeAttributes(definitionType, schema);

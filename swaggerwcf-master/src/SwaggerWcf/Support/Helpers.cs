@@ -118,7 +118,16 @@ namespace SwaggerWcf.Support
             {
                 definitions.Add(type);
             }
-            return new TypeFormat(ParameterType.Object, HttpUtility.HtmlEncode(type.FullName));
+			DataContractAttribute dca = type.GetCustomAttribute<DataContractAttribute>();
+
+			if (dca != null)
+			{
+				if (!String.IsNullOrWhiteSpace(dca.Name))
+				{
+					return new TypeFormat(ParameterType.Object, HttpUtility.HtmlEncode(dca.Name));
+				}
+			}
+			return new TypeFormat(ParameterType.Object, HttpUtility.HtmlEncode(type.Name));
         }
 
         private static string BuildTypeString(string typeName, string defaultNote = null, string typeNote = null)

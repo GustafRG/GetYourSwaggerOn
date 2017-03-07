@@ -12,8 +12,8 @@ using SwaggerWcf.Attributes;
 namespace GetYourSwaggerOn.Core.Classes
 {   
     [Serializable]
-    [DataContract(Namespace = "")]
-    class MyClass
+    [DataContract(Name = "Baghargar", Namespace = "")]
+	class MyClass
     {
         public MyClass() { }
 
