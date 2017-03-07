@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using SwaggerWcf.Attributes;
+
 namespace GetYourSwaggerOn.Core.Classes
 {   
     [Serializable]
     [DataContract(Namespace = "")]
-    sealed class MyClass
+    class MyClass
     {
         public MyClass() { }
 

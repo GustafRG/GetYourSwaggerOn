@@ -37,10 +37,6 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SwaggerWcf, Version=0.1.22.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SwaggerWcf.0.1.22\lib\net45\SwaggerWcf.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -75,7 +71,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\swaggerwcf-master\src\SwaggerWcf\SwaggerWcf.csproj">
+      <Project>{0ad6efbc-412f-4c0e-8e0a-0faf28151b55}</Project>
+      <Name>SwaggerWcf</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
