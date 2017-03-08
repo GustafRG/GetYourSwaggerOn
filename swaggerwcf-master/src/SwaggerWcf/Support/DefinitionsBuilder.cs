@@ -53,12 +53,24 @@ namespace SwaggerWcf.Support
         private static Definition ConvertTypeToDefinition(Type definitionType, IList<string> hiddenTags,
                                                           Stack<Type> typesStack)
         {
-            DefinitionSchema schema = new DefinitionSchema
-            {
-				//TODO: Testa ändra name /Gustaf
-				Data
-				Name = definitionType.Name
-            };
+			DefinitionSchema schema = new DefinitionSchema();
+
+			//Get DataContractAttribute to set Schema name to match TypeFormat
+			DataContractAttribute dca = definitionType.GetCustomAttribute<DataContractAttribute>();
+
+			//If DataContractAttribute.Name is set use that, otherwise use definitionType.Name
+			if (dca != null)
+			{
+				if (!String.IsNullOrWhiteSpace(dca.Name))
+				{
+					schema.Name = dca.Name;
+				}
+				else
+				{
+					schema.Name = definitionType.Name;
+				}
+
+			}
 
             ProcessTypeAttributes(definitionType, schema);
 

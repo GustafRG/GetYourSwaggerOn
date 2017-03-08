@@ -12,14 +12,14 @@ using SwaggerWcf.Attributes;
 namespace GetYourSwaggerOn.Core.Classes
 {   
     [Serializable]
-    [DataContract(Name = "Baghargar", Namespace = "")]
+    [DataContract(Name = "Foo", Namespace = "")]
 	class MyClass
     {
         public MyClass() { }
 
         private String myVar;
 
-        [DataMember]
+        [DataMember(Name= "Bar")]
         public String MyProperty
         {
             get { return myVar; }

@@ -118,6 +118,7 @@ namespace SwaggerWcf.Support
             {
                 definitions.Add(type);
             }
+			//Check for set DataContractAttribute to set Name and - Should this check for, and set DataContractAttribute.Namespace as well? /GustafRG
 			DataContractAttribute dca = type.GetCustomAttribute<DataContractAttribute>();
 
 			if (dca != null)

@@ -7,7 +7,7 @@
         public string Format;
 
         public TypeFormat(ParameterType type, string format)
-        {
+      {
             Type = type;
             Format = format;
         }
