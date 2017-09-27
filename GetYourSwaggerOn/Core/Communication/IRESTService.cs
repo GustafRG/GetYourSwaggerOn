@@ -16,7 +16,18 @@ namespace GetYourSwaggerOn.Core.Communication
     {
         [SwaggerWcfPath("Create MyClass", "Create a MyClass instance")]
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "v1/myclass/")]
-        MyClass DoStuff(MyClass myclass);
-    }
+        [WebInvoke(UriTemplate = "v1/myclass/", Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
+        MyClass DoStuff([SwaggerWcfParameter]MyClass myclass);
+
+
+		//[SwaggerWcfPath("Get Classes", "Get a list of classes")]
+		//[OperationContract]
+		//[WebGet(UriTemplate = "v1/myclass/", ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
+		//List<MyClass> GetMyClasses();
+
+		[SwaggerWcfPath("Get Classes", "Get a list of classes with ids matching")]
+		[OperationContract]
+		[WebGet(UriTemplate = "v1/myclass/?id={id}", ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
+		List<MyClass> GetMyClasses([SwaggerWcfParameter]string id);
+	}
 }
